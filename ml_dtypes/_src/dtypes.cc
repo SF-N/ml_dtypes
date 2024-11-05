@@ -39,7 +39,8 @@ limitations under the License.
 
 namespace ml_dtypes {
 
-using bfloat16 = Eigen::bfloat16;
+
+using bfloat16 = std::bfloat16_t;
 
 template <>
 struct TypeDescriptor<bfloat16> : CustomFloatType<bfloat16> {

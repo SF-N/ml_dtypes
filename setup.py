@@ -30,7 +30,7 @@ if platform.system() == "Windows":
   ]
 else:
   COMPILE_ARGS = [
-      "-std=c++17",
+      "-std=c++23",
       "-DEIGEN_MPL2_ONLY",
       "-fvisibility=hidden",
       # -ftrapping-math is necessary because NumPy looks at floating point

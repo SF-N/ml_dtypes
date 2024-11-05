@@ -135,12 +135,12 @@ bool CastToCustomFloat(PyObject* arg, T* output) {
     *output = T(static_cast<float>(l));
     return true;
   }
-  if (PyArray_IsScalar(arg, Half)) {
-    Eigen::half f;
-    PyArray_ScalarAsCtype(arg, &f);
-    *output = T(f);
-    return true;
-  }
+//  if (PyArray_IsScalar(arg, Half)) {
+//    Eigen::half f;
+//    PyArray_ScalarAsCtype(arg, &f);
+//    *output = T(f);
+//    return true;
+//  }
   if (PyArray_IsScalar(arg, Float)) {
     float f;
     PyArray_ScalarAsCtype(arg, &f);

@@ -29,6 +29,7 @@ limitations under the License.
 #include <ostream>
 #include <type_traits>
 #include <utility>
+#include <stdfloat>
 
 #ifdef __has_include
 #if __has_include(<version>)
@@ -75,7 +76,7 @@ class float8_base {
   explicit EIGEN_DEVICE_FUNC float8_base(
       T f, std::enable_if_t<std::is_floating_point_v<T>, int> = 0)
       : float8_base(ConvertFrom(f).rep(), ConstructFromRepTag{}) {}
-  explicit EIGEN_DEVICE_FUNC float8_base(Eigen::bfloat16 bf16)
+  explicit EIGEN_DEVICE_FUNC float8_base(std::bfloat16_t bf16)
       : float8_base(ConvertFrom(bf16).rep(), ConstructFromRepTag{}) {}
   explicit EIGEN_DEVICE_FUNC float8_base(Eigen::half f16)
       : float8_base(ConvertFrom(f16).rep(), ConstructFromRepTag{}) {}
@@ -93,8 +94,8 @@ class float8_base {
   EIGEN_DEVICE_FUNC operator float() const {
     return ConvertTo<float>(derived());
   }
-  EIGEN_DEVICE_FUNC operator Eigen::bfloat16() const {
-    return ConvertTo<Eigen::bfloat16>(derived());
+  EIGEN_DEVICE_FUNC operator std::bfloat16_t() const {
+    return ConvertTo<std::bfloat16_t>(derived());
   }
   EIGEN_DEVICE_FUNC operator Eigen::half() const {
     return ConvertTo<Eigen::half>(derived());
